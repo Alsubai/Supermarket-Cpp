@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int product, quantity;
+    char again;
+    double total = 0;
+
+    do {
+        cout << "\n--- Supermarket Menu ---\n";
+        cout << "1. Juice (5 SAR)\n";
+        cout << "2. Chips (3 SAR)\n";
+        cout << "3. Chocolate (7 SAR)\n";
+        cout << "4. Water (1 SAR)\n";
+        cout << "5. Sandwich (10 SAR)\n";
+        cout << "Choose product number: ";
+        cin >> product;
+
+        switch (product)
+        {
+            case 1:
+                cout << "Product: Juice\n";
+                cout << "Enter quantity: ";
+                cin >> quantity;
+                cout << "Price before discount: " << 5 * quantity << endl;
+                cout << "Discount: 20%\n";
+                cout << "Final price: " << (5 * quantity) * 0.80 << endl;
+                total += (5 * quantity) * 0.80;
+                break;
+
+            case 2:
+                cout << "Product: Chips\n";
+                cout << "Enter quantity: ";
+                cin >> quantity;
+                cout << "Price before discount: " << 3 * quantity << endl;
+                cout << "Discount: 0%\n";
+                cout << "Final price: " << 3 * quantity << endl;
+                total += 3 * quantity;
+                break;
+
+            case 3:
+                cout << "Product: Chocolate\n";
+                cout << "Enter quantity: ";
+                cin >> quantity;
+                cout << "Price before discount: " << 7 * quantity << endl;
+                cout << "Discount: 20%\n";
+                cout << "Final price: " << (7 * quantity) * 0.80 << endl;
+                total += (7 * quantity) * 0.80;
+                break;
+
+            case 4:
+                cout << "Product: Water\n";
+                cout << "Enter quantity: ";
+                cin >> quantity;
+                cout << "Price before discount: " << 1 * quantity << endl;
+                cout << "Discount: 0%\n";
+                cout << "Final price: " << 1 * quantity << endl;
+                total += 1 * quantity;
+                break;
+
+            case 5:
+                cout << "Product: Sandwich\n";
+                cout << "Enter quantity: ";
+                cin >> quantity;
+
+                if (quantity == 1)
+                {
+                    char option;
+                    cout << "Do you want a second sandwich for half price? (y/n): ";
+                    cin >> option;
+
+                    if (option == 'y' || option == 'Y')
+                    {
+                        cout << "Final price: 15\n";
+                        total += 15; // 10 + 5
+                    }
+                    else
+                    {
+                        cout << "Final price: 10\n";
+                        total += 10;
+                    }
+                }
+                else
+                {
+                    double price = (10 * quantity) * 0.70;
+                    cout << "Price before discount: " << 10 * quantity << endl;
+                    cout << "Discount: 30%\n";
+                    cout << "Final price: " << price << endl;
+                    total += price;
+                }
+                break;
+
+            default:
+                cout << "Invalid product number.\n";
+        }
+
+        cout << "\nDo you want to buy something else? (y/n): ";
+        cin >> again;
+
+    } while (again == 'y' || again == 'Y');
+
+    cout << "\n===============================\n";
+    cout << "      Final Bill: " << total << " SAR\n";
+    cout << "===============================\n";
+
+    return 0;
+}
